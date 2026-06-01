@@ -29,11 +29,12 @@ def convert(msg: str):
     except ValueError:
         index = 0
 
-    # thinking_content = tokenizer.decode(output_ids[:index], skip_special_tokens=True).strip("\n")
+    thinking_content = tokenizer.decode(output_ids[:index], skip_special_tokens=True).strip("\n")
     content = tokenizer.decode(output_ids[index:], skip_special_tokens=True).strip("\n")
 
-    # print(f"思考：\n{thinking_content}\n")
+    print(f"{thinking_content}")
+    print("-" * 66)
     print(f"\n{content}")
-    # print("-" * 66)
+    print("=" * 66)
 
     return content
