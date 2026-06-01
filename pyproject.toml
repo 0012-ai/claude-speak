@@ -1,0 +1,21 @@
+[project]
+name = "claude-speak"
+version = "0.1.0"
+description = "使Claude可以在执行的过程中说话"
+readme = "README.md"
+authors = [{ name = "Husky", email = "husky.robot.dog@gmail.com" }]
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.13.0",
+    "fastapi>=0.136.3",
+    "torch>=2.12.0",
+    "transformers>=5.9.0",
+    "uvicorn>=0.48.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.17,<0.12.0"]
+build-backend = "uv_build"
+
+[project.scripts]
+app = "claude_speak.main:run"
