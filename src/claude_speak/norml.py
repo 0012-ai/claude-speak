@@ -1,3 +1,5 @@
+import re
+
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from .config import NORML_MAXTOKEN, PROMPT, THINKING
@@ -37,4 +39,6 @@ def convert(msg: str):
     print(f"\n{content}")
     print("=" * 66)
 
-    return content
+    result = re.sub(r"[^\u4e00-\u9fff0-9a-zA-Z]", "", content)
+
+    return result
