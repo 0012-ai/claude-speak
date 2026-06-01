@@ -1,6 +1,6 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from .config import NORML_MAXTOKEN, PROMPT
+from .config import NORML_MAXTOKEN, PROMPT, THINKING
 
 model_name = "Qwen/Qwen3-0.6B"
 
@@ -17,7 +17,7 @@ def convert(msg: str):
         messages,
         tokenize=False,
         add_generation_prompt=True,
-        enable_thinking=True,
+        enable_thinking=THINKING,
     )
     model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 

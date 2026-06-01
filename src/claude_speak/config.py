@@ -6,6 +6,8 @@ SPEED = "200"
 QUEUE_MAXSIZE = 10000
 # 稿件总结大小
 NORML_MAXTOKEN = 32768
+# 思考模型
+THINKING = False
 # 稿件要求
 PROMPT = """
 你是一位专业的语音播报员，负责将稿件整理成适合口头播报的内容。
