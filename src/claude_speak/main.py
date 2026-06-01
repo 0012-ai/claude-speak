@@ -2,6 +2,7 @@ import asyncio
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import Response
 
 from .config import QUEUE_MAXSIZE
 from .processor import process_message
@@ -38,7 +39,7 @@ async def consumer(queue: asyncio.Queue[dict]) -> None:
 
 
 @app.post("/message")
-async def put_message(body: dict) -> str:
+async def put_message(body: dict) -> Response:
     global message_queue
 
     try:
@@ -46,7 +47,7 @@ async def put_message(body: dict) -> str:
     except asyncio.QueueFull:
         raise HTTPException(status_code=503, detail="Queue is full")
 
-    return "OK"
+    return Response(status_code=200)
 
 
 def run():
@@ -57,6 +58,7 @@ def run():
         host="0.0.0.0",
         port=8000,
         reload=False,
+        log_level="warning",
     )
 
 
